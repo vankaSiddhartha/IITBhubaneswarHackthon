@@ -10,6 +10,8 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react'
 import NavBar from './components/NavBar'
+import Features from './components/Features'
+import Footer from './components/Footer'
 
 
 export default function LandingPage() {
@@ -63,11 +65,13 @@ export default function LandingPage() {
           alt={'Login Image'}
           objectFit={'cover'}
           src={
-            'https://firebasestorage.googleapis.com/v0/b/mycrush-9ec67.appspot.com/o/Untitled%20design%20(8).png?alt=media&token=cffacbd1-a157-4e15-af65-8a088770811e'
+            'https://www.adpushup.com/blog/wp-content/uploads/2020/05/post-bidding.jpg'
           }
         />
       </Flex>
     </Stack>
+<Features/>
+<Footer/>
 
    
     </>
