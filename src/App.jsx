@@ -1,16 +1,7 @@
-<<<<<<< HEAD
+
 import React from "react"
 import NavBar from "./auth/components/NavBar"
 
-
-
-function App() {
-  
-
-  return (
-    <>
-      <NavBar/>
-=======
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -22,11 +13,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
 import Bidding from './Gojo/Bidding'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBaGEpnwQf01FPH_3FDz8HiKrrFUD6h-lU",
   authDomain: "hackathon-80b62.firebaseapp.com",
@@ -51,14 +38,15 @@ export async function read(path){
 }
 
 function App() {
+  
 
   return (
     <>
-      <AddCard db = {db} />
+      <NavBar/>
+      <AddCard db = {db} />-
       <Bidding db = {db} />
->>>>>>> 391a76e84eac33e520b220ef428e07af610756c8
-    </>
+      </>
   )
-}
+  }
 
 export default App
