@@ -35,7 +35,7 @@ const SelectInterest = () => {
   };
 
   return (
-    <div style={{ width: '70%', margin: '0 auto' }}>
+    <div style={{ width: '100%', margin: '0 auto' }}>
       <h2>Select Your Interests</h2>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {interestsList.map(interest => (
@@ -56,14 +56,7 @@ const SelectInterest = () => {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: '20px' }}>
-        <h3>Selected Interests:</h3>
-        <ul style={{ listStyleType: 'none', padding: 0 }}>
-          {selectedInterests.map(interest => (
-            <li key={interest}>{interest}</li>
-          ))}
-        </ul>
-      </div>
+  
     </div>
   );
 };

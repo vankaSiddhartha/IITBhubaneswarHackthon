@@ -18,6 +18,12 @@ import Bidding from './Gojo/Bidding'
 import LandingPage from "./auth/LandingPage"
 import CreateAccount from "./auth/createAccount/CreateAccount"
 import SelectInterest from "./auth/createAccount/SelectIntrest"
+import RegisterAccount from "./auth/createAccount/RegisterAccount"
+import LoginAccount from "./auth/login/LoginAccount"
+import EmailVerify from "./auth/login/EmailVerify"
+
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBaGEpnwQf01FPH_3FDz8HiKrrFUD6h-lU",
@@ -53,6 +59,10 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/createAccount" element={<CreateAccount />} />
         <Route path="/intrest" element={<SelectInterest/>}/>
+                <Route path="/reg" element={<RegisterAccount/>}/>
+                <Route path="/login" element = {<LoginAccount/>}/>
+                <Route path="/verify" element = {<EmailVerify/>}/>
+
       </Routes>
     </Router>
   );
