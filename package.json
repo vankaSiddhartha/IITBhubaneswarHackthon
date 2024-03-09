@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
+=======
+    "firebase": "^10.8.1",
+>>>>>>> 391a76e84eac33e520b220ef428e07af610756c8
     "npm": "^10.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
