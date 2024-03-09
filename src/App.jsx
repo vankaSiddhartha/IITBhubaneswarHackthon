@@ -22,6 +22,9 @@ import RegisterAccount from "./auth/createAccount/RegisterAccount"
 import LoginAccount from "./auth/login/LoginAccount"
 import EmailVerify from "./auth/login/EmailVerify"
 import Home from "./socialModule/Home"
+import FriendRequestUI from "./socialModule/FriendsRequest"
+import SeeFriendInDetail from "./socialModule/SeeFriendsInDetails"
+
 
 
 
@@ -64,6 +67,8 @@ function App() {
                 <Route path="/login" element = {<LoginAccount/>}/>
                 <Route path="/verify" element = {<EmailVerify/>}/>
                 <Route path="/post" element = {<Home/>}/>
+                <Route path="/fr" element={<FriendRequestUI/>}/>
+                <Route path="/see" element = {<SeeFriendInDetail/>}/>
 
       </Routes>
     </Router>
