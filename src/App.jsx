@@ -6,8 +6,9 @@ import AddCard from './Gojo/AddCard'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, onValue, ref } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
+import Bidding from './Gojo/Bidding'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,11 +29,20 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase(app)
 
+export async function read(path){
+  return new Promise((res, rej) => {
+    onValue(ref(db, path), snap => {
+      res(snap.val())
+    })
+  })
+}
+
 function App() {
 
   return (
     <>
       <AddCard db = {db} />
+      <Bidding db = {db} />
     </>
   )
 }

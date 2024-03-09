@@ -5,11 +5,17 @@ export default function AddCard({db}) {
 
     async function add(){
 
-        let name = document.querySelector('.name').value
-        let base = document.querySelector('.base-price').value
+        let name = document.querySelector('.name').value;
+        let base = document.querySelector('.base-price').value;
         update(ref(db, `Varshith/Vini/Products`), {
             [name] : {
-                Base : base
+                Base : parseInt(base),
+                Bid : {
+
+                    Bid1 : 0,
+                    Bid2 : 0,
+                    Bid3 : 0,
+                }
             }
         })
         // await new Promise((res, rej) => {
