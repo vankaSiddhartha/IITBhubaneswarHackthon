@@ -4,9 +4,13 @@ import { update, ref } from 'firebase/database';
 export default function Bidding({ db }) {
 
     async function bid(){
+
         let bid1, bid2, bid3;
         let nbid = document.querySelector('.bid').value;
         let Bid = await read(`Varshith/Vini/Products/soap`)
+        if(Bid.Time <= "jsbcj"){
+            return
+        }
         bid1 = Bid.Bid.Bid1.split('_')[0];
         bid2 = Bid.Bid.Bid2.split('_')[0];
         bid3 = Bid.Bid.Bid3.split('_')[0];

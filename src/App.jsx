@@ -7,6 +7,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import AddCard from './Gojo/AddCard'
+import { getStorage, ref as ref1,uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -28,6 +29,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase(app)
+const storage = getStorage(app)
+
 
 export async function read(path){
   return new Promise((res, rej) => {
@@ -43,8 +46,8 @@ function App() {
   return (
     <>
       <NavBar/>
-      <AddCard db = {db} />-
-      <Bidding db = {db} />
+      <AddCard db = {db} storage = {storage} />
+      <Bidding db = {db}  />
       </>
   )
   }
