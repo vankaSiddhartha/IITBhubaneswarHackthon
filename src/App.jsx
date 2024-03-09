@@ -5,7 +5,6 @@ import NavBar from "./auth/components/NavBar"
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 import AddCard from './Gojo/AddCard'
 
 // Import the functions you need from the SDKs you need
@@ -13,6 +12,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
 import Bidding from './Gojo/Bidding'
+import LandingPage from "./auth/LandingPage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBaGEpnwQf01FPH_3FDz8HiKrrFUD6h-lU",
@@ -42,9 +42,8 @@ function App() {
 
   return (
     <>
-      <NavBar/>
-      <AddCard db = {db} />-
-      <Bidding db = {db} />
+      <LandingPage/>
+    
       </>
   )
   }
