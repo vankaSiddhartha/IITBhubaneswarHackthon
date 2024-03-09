@@ -12,6 +12,8 @@ import {
 import NavBar from './components/NavBar'
 import Features from './components/Features'
 import Footer from './components/Footer'
+import CreateAccount from './createAccount/CreateAccount'
+import SelectIntrest from './createAccount/SelectIntrest'
 
 
 export default function LandingPage() {
@@ -72,6 +74,7 @@ export default function LandingPage() {
     </Stack>
 <Features/>
 <Footer/>
+
 
    
     </>

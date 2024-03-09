@@ -7,6 +7,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import AddCard from './Gojo/AddCard'
 import { getStorage, ref as ref1,uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -14,6 +16,8 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
 import Bidding from './Gojo/Bidding'
 import LandingPage from "./auth/LandingPage"
+import CreateAccount from "./auth/createAccount/CreateAccount"
+import SelectInterest from "./auth/createAccount/SelectIntrest"
 
 const firebaseConfig = {
   apiKey: "AIzaSyBaGEpnwQf01FPH_3FDz8HiKrrFUD6h-lU",
@@ -40,17 +44,18 @@ export async function read(path){
   })
 }
 
+
+
 function App() {
-  
-
   return (
-    <>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/createAccount" element={<CreateAccount />} />
+        <Route path="/intrest" element={<SelectInterest/>}/>
+      </Routes>
+    </Router>
+  );
+}
 
-      <LandingPage/>
-          <AddCard db = {db} storage = {storage} />
-      <Bidding db = {db}  />
-      </>
-  )
-  }
-
-export default App
+export default App;
