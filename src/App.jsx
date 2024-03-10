@@ -28,6 +28,8 @@ import './index.css'
 import SeeFriendInDetail from "./socialModule/SeeFriendsInDetails"
 import ChatB from "./socialModule/ChatB"
 import FriendRecomdataion from "./socialModule/FriendsRecomdationWithNav"
+import NotificationPanel from "./socialModule/Notification"
+import NotificationInNav from "./socialModule/NotificationInNav"
 
 
 
@@ -76,6 +78,7 @@ function App() {
            
                 <Route path="/see" element = {<SeeFriendInDetail/>}/>
                      <Route path="/seeFri" element = {<SeeFriendInDetail/>}/>
+                     <Route path="/noti" element = {<NotificationInNav/>}/>
 
       </Routes>
     </Router>
