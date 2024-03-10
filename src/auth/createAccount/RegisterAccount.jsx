@@ -8,13 +8,20 @@ import {
   Heading,
   Input,
   Stack,
+  Center,
   Image,
   Select // Add Select component for dropdown
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import SelectInterest from './SelectIntrest';
+import { useNavigate } from 'react-router-dom';
+import BounceLoader from "react-spinners/BounceLoader"
+
 
 export default function RegisterAccount() {
+    const navigation = useNavigate()
+      const [loading, setLoading] = useState(false);
+
   const [location, setLocation] = useState('');
   const [age, setAge] = useState('');
   const [interests, setInterests] = useState([]);
@@ -22,15 +29,35 @@ export default function RegisterAccount() {
 
   const handleSubmit = () => {
     if (!privacyPolicyAccepted) {
-      console.log("Please accept the privacy policy.");
+      alert('Please accept the privacy policy.')
       return;
+     
     }
-    // Add your form submission logic here
-    console.log("Form submitted!");
+    // Show loading div
+    setLoading(true);
+
+    // Simulate form submission delay
+    setTimeout(() => {
+      // Navigate to the desired page
+      navigation('/home');
+    }, 3000); 
   };
 
   return (
     <>
+       {loading && (
+      <Center
+        position="fixed"
+        top={0}
+        left={0}
+        bottom={0}
+        right={0}
+        backgroundColor="rgba(255, 255, 255, 0.5)"
+        zIndex={9999}
+      >
+        <BounceLoader color="#36d7b7" />
+      </Center>
+    )}
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={4} w={'full'} maxW={'md'}>

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import AddCard from './Gojo/AddCard'
+import SidebarWithHeader from "./HomePage"
 import { getStorage, ref as ref1,uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -21,9 +22,12 @@ import SelectInterest from "./auth/createAccount/SelectIntrest"
 import RegisterAccount from "./auth/createAccount/RegisterAccount"
 import LoginAccount from "./auth/login/LoginAccount"
 import EmailVerify from "./auth/login/EmailVerify"
-import Home from "./socialModule/Home"
+import Home from "./socialModule/ChatB"
 import FriendRequestUI from "./socialModule/FriendsRequest"
+import './index.css'
 import SeeFriendInDetail from "./socialModule/SeeFriendsInDetails"
+import ChatB from "./socialModule/ChatB"
+import FriendRecomdataion from "./socialModule/FriendsRecomdationWithNav"
 
 
 
@@ -66,9 +70,12 @@ function App() {
                 <Route path="/reg" element={<RegisterAccount/>}/>
                 <Route path="/login" element = {<LoginAccount/>}/>
                 <Route path="/verify" element = {<EmailVerify/>}/>
-                <Route path="/post" element = {<Home/>}/>
-                <Route path="/fr" element={<FriendRequestUI/>}/>
+                <Route path="/post" element = {<ChatB/>}/>
+                <Route path="/fr" element={<FriendRecomdataion/>}/>
+                <Route path="/home" element = {<SidebarWithHeader/>}/>
+           
                 <Route path="/see" element = {<SeeFriendInDetail/>}/>
+                     <Route path="/seeFri" element = {<SeeFriendInDetail/>}/>
 
       </Routes>
     </Router>

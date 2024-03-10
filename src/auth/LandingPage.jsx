@@ -14,9 +14,11 @@ import Features from './components/Features'
 import Footer from './components/Footer'
 import CreateAccount from './createAccount/CreateAccount'
 import SelectIntrest from './createAccount/SelectIntrest'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function LandingPage() {
+  const navigate = useNavigate()
   return (
     <>
      <NavBar/>
@@ -50,15 +52,16 @@ export default function LandingPage() {
           </Text>
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             <Button
+             onClick={()=>{navigate('/createAccount')}}
               rounded={'full'}
               bg={'blue.300'}
               color={'white'}
               _hover={{
                 bg: 'blue.500',
               }}>
-              Add Product
+              Join Now!!
             </Button>
-            <Button rounded={'full'}>Bid Products</Button>
+            <Button rounded={'full'}>LogIn</Button>
           </Stack>
         </Stack>
       </Flex>

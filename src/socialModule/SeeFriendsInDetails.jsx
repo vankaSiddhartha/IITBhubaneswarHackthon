@@ -12,15 +12,22 @@ import {
   HStack,
   useColorModeValue,
 } from '@chakra-ui/react'
-
+import { useLocation } from 'react-router-dom';
 export default function SocialProfileSimple() {
+       const location = useLocation();
+  const { name, imageUrl, isFollowing } = location.state;
   // Dummy data for joined clubs and activity feed
-  const joinedClubs = ["Art Club", "Photography Club"];
+  const joinedClubs = ["Artwork",
+    "Antiques",
+    "Jewelry",
+    "Coins and Currency",
+    "Watches"];
   const activityFeed = [
     { action: "Bid on Horse Toy", amount: "$3" },
     { action: "Joined Photography Club" },
     { action: "Bid on Artwork", amount: "$25" }
   ];
+ 
 
   return (
     <Center py={10}>
@@ -35,7 +42,7 @@ export default function SocialProfileSimple() {
         <Avatar
           size={'2xl'}
           src={
-            'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
+            imageUrl
           }
           mb={4}
           pos={'relative'}
@@ -52,10 +59,10 @@ export default function SocialProfileSimple() {
           }}
         />
         <Heading fontSize={'4xl'} fontFamily={'body'}>
-          Lindsey James
+          {name}
         </Heading>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          @lindsey_jam3s
+          @{name}
         </Text>
         <Text
           textAlign={'center'}
@@ -90,23 +97,23 @@ export default function SocialProfileSimple() {
         </Stack>
 
         <Stack mt={8} direction={'row'} spacing={4}>
-          <Button
-            flex={1}
-            fontSize={'lg'}
-            rounded={'full'}
-            bg={'blue.400'}
-            color={'white'}
-            boxShadow={
-              '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-            }
-            _hover={{
-              bg: 'blue.500',
-            }}
-            _focus={{
-              bg: 'blue.500',
-            }}>
-            Follow
-          </Button>
+            <Button
+      flex={1}
+      fontSize={'lg'}
+      rounded={'full'}
+      bg={isFollowing ? 'green.400' : 'blue.400'} // Change color based on isFollowing
+      color={'white'}
+      boxShadow={
+        '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+      }
+      _hover={{
+        bg: isFollowing ? 'green.500' : 'blue.500', // Change hover color based on isFollowing
+      }}
+      _focus={{
+        bg: isFollowing ? 'green.500' : 'blue.500', // Change focus color based on isFollowing
+      }}>
+      {isFollowing ? 'Following' : 'Follow'}
+    </Button>
           <Button
             flex={1}
             fontSize={'lg'}
@@ -146,3 +153,4 @@ export default function SocialProfileSimple() {
     </Center>
   )
 }
+ 

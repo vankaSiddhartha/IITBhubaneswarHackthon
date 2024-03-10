@@ -14,10 +14,16 @@ import {
   Avatar,
 } from '@chakra-ui/react'
 import { SmallCloseIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import BounceLoader from "react-spinners/BounceLoader"
 
 export default function CreateAccount() {
+  const [userName, setUserName] = useState('');
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -28,14 +34,45 @@ export default function CreateAccount() {
     };
   };
 
+  const handleUploadButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
   const handleSubmit = () => {
-    // Add your form submission logic here
-    console.log("Form submitted!");
+    // Retrieve user name input value
+    const userNameInput = document.getElementById('userNameInput').value;
+
+    // Store user name in local storage
+    localStorage.setItem('userName', userNameInput);
+
+    // Show loading div
+    setLoading(true);
+
+    // Simulate form submission delay
+    setTimeout(() => {
+      // Navigate to the desired page
+      navigate('/reg');
+    }, 3000); // Change delay time as needed
   };
 
   return (
+    <>
+      {loading && (
+      <Center
+        position="fixed"
+        top={0}
+        left={0}
+        bottom={0}
+        right={0}
+        backgroundColor="rgba(255, 255, 255, 0.5)"
+        zIndex={9999}
+      >
+        <BounceLoader color="#36d7b7" />
+      </Center>
+    )}
     <Center minH={'100vh'}>
-      <Flex flex={1} justify="center" align="center"padding={'50px'}>
+ 
+      <Flex flex={1} justify="center" align="center" padding={'50px'}>
         <Image
           alt={'Login Image'}
           objectFit={'cover'}
@@ -57,11 +94,11 @@ export default function CreateAccount() {
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
             Create Account
           </Heading>
-          <FormControl id="userName">
+          <FormControl id="userName" isRequired>
             <FormLabel>User Icon</FormLabel>
             <Stack direction={['column', 'row']} spacing={6}>
               <Center>
-                <Avatar size="xl" src="https://bit.ly/sage-adebayo">
+                <Avatar size="xl" src={image ? image : ""}>
                   <AvatarBadge
                     as={IconButton}
                     size="sm"
@@ -74,11 +111,17 @@ export default function CreateAccount() {
                 </Avatar>
               </Center>
               <Center w="full">
-                <Button w="full">Change Icon</Button>
+                <Button w="full" onClick={handleUploadButtonClick}>Change Icon</Button>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleImageUpload}
+                />
               </Center>
             </Stack>
           </FormControl>
-          <FormControl id="userName" isRequired>
+          <FormControl id="userNameInput" isRequired>
             <FormLabel>User name</FormLabel>
             <Input
               placeholder="UserName"
@@ -123,8 +166,10 @@ export default function CreateAccount() {
               Submit
             </Button>
           </Stack>
+         
         </Stack>
       </Flex>
     </Center>
+    </>
   )
 }

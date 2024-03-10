@@ -9,8 +9,20 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { faker } from '@faker-js/faker';
+import { useNavigate } from 'react-router-dom';
 
 function FriendRequestUI() {
+    const navigate = useNavigate();
+     const handleClick = () => {
+    navigate("/", {
+      state: {
+        name: request.name,
+        imageUrl: request.imageUrl,
+        isFollowing: request.isFollowing
+      }
+    });
+  };
+   
   const [friendRequests, setFriendRequests] = useState(
     Array.from({ length: 20 }, (_, index) => ({
       id: index + 1,
@@ -37,8 +49,8 @@ function FriendRequestUI() {
             <Text color="gray.500">See All</Text>
           </Flex>
           {friendRequests.map((request) => (
-            <Flex key={request.id} align="center" mb="4">
-              <Box mr="4">
+            <Flex key={request.id} align="center" mb="4" >
+              <Box mr="4" >
                 <Box
                   w="10"
                   h="10"
@@ -50,7 +62,15 @@ function FriendRequestUI() {
                   <img
                     src={request.imageUrl}
                     alt={request.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onClick={() => {
+    navigate("/seeFri", {
+      state: {
+        name: request.name,
+        imageUrl: request.imageUrl,
+        isFollowing: request.isFollowing
+      }
+    });}}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   />
                 </Box>
               </Box>

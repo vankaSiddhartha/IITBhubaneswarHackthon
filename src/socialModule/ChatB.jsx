@@ -21,7 +21,7 @@ const filters = { type: "messaging", members: { $in: ["little-wood-9"] } };
 // TS tweak No1
 const sort = { last_message_at: -1 } ;
 
-const App = () => {
+const ChatB = () => {
   // TS tweak No2
 const [chatClient, setChatClient] = useState(null);
 
@@ -68,4 +68,4 @@ const [chatClient, setChatClient] = useState(null);
   );
 };
 
-export default App;
+export default ChatB;
